@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>TABLA DE PRODUCTOS</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f8f9fa;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    h1 {
+      margin-bottom: 30px;
+      text-align: left;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 30px;
+    }
+
+    th, td {
+      padding: 12px 15px;
+      text-align: left;
+    }
+
+    th {
+      background-color: #007bff;
+      color: #fff;
+    }
+
+    tr:nth-child(even) {
+      background-color: #f2f2f2;
+    }
+
+    img {
+      max-width: 100px;
+      max-height: 100px;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 6px 12px;
+      font-size: 14px;
+      border-radius: 4px;
+      text-decoration: none;
+      margin-right: 10px;
+      cursor: pointer;
+      color: #fff;
+      background-color: #dc3545;
+      border: none;
+    }
+
+    .btn-success {
+      background-color: #28a745;
+    }
+
+    .btn-warning {
+      background-color: #ffc107;
+    }
+
+    .btn-danger {
+      background-color: #dc3545;
+    }
+
+    .btn-block {
+      display: block;
+      width: 100%;
+    }
+
+    .btn-add {
+      display: block;
+      width: 150px;
+      margin: 0 auto;
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <h1>TABLA DE PRODUCTOS</h1>
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>NOMBRE</th>
+        <th>DESCRIPCION</th>
+        <th>PRECIO</th>
+        <th>IMAGEN</th>
+        <th>ACCIONES</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% data.forEach((row) => { %>
+        <tr>
+          <td><%= row.id %></td>
+          <td><%= row.nombre %></td>
+          <td><%= row.descripcion %></td> 
+          <td><%= row.precio %></td>
+          <td><img src="<%= row.imagen %>" alt="<%= row.imagen %>"></td>
+          <td>
+            <div>
+              <a class="btn btn-warning" href="/up/<%= row.id %>">Editar</a>
+              <a class="btn btn-danger" href="/delete/<%= row.id %>">Eliminar</a>
+            </div>
+          </td>
+        </tr>
+      <% }); %>
+    </tbody>
+  </table>
+
+  <a class="btn btn-success btn-block btn-add" href="/add">Agregar Nuevo Producto</a>
+</div>
+</body>
+</html>
